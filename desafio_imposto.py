@@ -67,15 +67,15 @@ if __name__=="__main__":
 
     print("CONSOLIDADO DE RENDA")
     calculo = DesafioImposto()
-    print(f"Imposto sobre salario: R${calculo.imposto_salario(salario)}")
-    print(f"Imposto sobre servicos: R${calculo.imposto_prest_servico(renda_prest)}")
-    print(f"Imposto sobre ganho de capital: R${calculo.imposto_ganho_capital(renda_ganho)}")
+    print(f"Imposto sobre salario: R${calculo.imposto_salario(salario):.2f}")
+    print(f"Imposto sobre servicos: R${calculo.imposto_prest_servico(renda_prest):.2f}")
+    print(f"Imposto sobre ganho de capital: R${calculo.imposto_ganho_capital(renda_ganho):.2f}")
     
     print("\n DEDUCOES: ")
-    print(f"Maximo dedutivel: R${calculo.imposto_maximo_dedutivel()}")
-    print(f"Gastos dedutiveis: R${calculo.gastos_dedutiveis()}")
+    print(f"Maximo dedutivel: R${calculo.imposto_maximo_dedutivel():.2f}")
+    print(f"Gastos dedutiveis: R${calculo.gastos_dedutiveis():.2f}")
 
     print("\n RESUMO: ")
-    print(f"Imposto bruto total: R${calculo.imposto_total()}")
-    print(f"Abatimento: R${calculo.imposto_dedutivel()}")
-    print(f"Imposto devido: R${(calculo.imposto_total() - calculo.imposto_dedutivel())}")
+    print(f"Imposto bruto total: R${calculo.imposto_total():.2f}")
+    print(f"Abatimento: R${calculo.imposto_dedutivel():.2f}")
+    print(f"Imposto devido: R${(calculo.imposto_total() - calculo.imposto_dedutivel()):.2f}")
