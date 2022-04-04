@@ -26,8 +26,13 @@ class DesafioImposto:
         return self.valor_imposto_ganho
 
     def imposto_dedutivel(self):
-        return self.imposto_total() * 0.3
-    
+        valor1 = (self.imposto_total()) * 0.3
+        valor2 = self.gastos_dedutiveis()
+        if valor2 < valor1:
+            return valor2
+        else:
+            return valor1
+        
     def imposto_total(self):
         self.imposto_total = self.imposto_salario(salario) + self.imposto_prest_servico(renda_prest) + self.imposto_ganho_capital(renda_ganho)
         return self.imposto_total
@@ -62,9 +67,9 @@ if __name__=="__main__":
     
     print("\n DEDUCOES: ")
     print(f"Maximo dedutivel: R${calculo.imposto_dedutivel()}")
-    print(f"Gastos dedutiveis: R${calculo.gastos_dedutiveis()}")
+    print(f"Gastos dedutiveis: R${gastos_med + gastos_edu}")
 
-    print("\n RESUMO: ")
+    # print("\n RESUMO: ")
     #print(f"Imposto bruto total: R${calculo.imposto_total()}")
     #print(f"Abatimento: R${calculo.imposto_dedutivel()}")
     #print(f"Imposto devido: R${(calculo.imposto_total())}")
