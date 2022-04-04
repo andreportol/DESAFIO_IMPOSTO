@@ -33,21 +33,27 @@ class DesafioImposto:
         else:
             return valor1
         
+    def imposto_maximo_dedutivel(self):
+        return self.imposto_total()*0.3
+    
     def imposto_total(self):
-        self.imposto_total = self.imposto_salario(salario) + self.imposto_prest_servico(renda_prest) + self.imposto_ganho_capital(renda_ganho)
-        return self.imposto_total
+        valor1 = self.imposto_salario(salario)
+        valor2 = self.imposto_prest_servico(renda_prest) 
+        valor3 = self.imposto_ganho_capital(renda_ganho)
+        self.valor_total = valor1+valor2+valor3
+        return self.valor_total
     
     def gastos_medicos(self,gastos):
-        self.gastos_medicos = gastos
-        return self.gastos_medicos
+        self.valor_gastos_medicos = gastos
+        return self.valor_gastos_medicos
 
     def gastos_educacao(self,gastos):
-        self.gastos_educacao = gastos
-        return self.gastos_educacao
+        self.valor_gastos_educacao = gastos
+        return self.valor_gastos_educacao
     
     def gastos_dedutiveis(self):
-        self.gastos_dedutiveis = self.gastos_medicos(gastos_med) + self.gastos_educacao(gastos_edu)
-        return self.gastos_dedutiveis
+        self.valor_gastos_dedutiveis = self.gastos_medicos(gastos_med) + self.gastos_educacao(gastos_edu)
+        return self.valor_gastos_dedutiveis
 
 
 if __name__=="__main__":
@@ -66,10 +72,10 @@ if __name__=="__main__":
     print(f"Imposto sobre ganho de capital: R${calculo.imposto_ganho_capital(renda_ganho)}")
     
     print("\n DEDUCOES: ")
-    print(f"Maximo dedutivel: R${calculo.imposto_dedutivel()}")
-    print(f"Gastos dedutiveis: R${gastos_med + gastos_edu}")
+    print(f"Maximo dedutivel: R${calculo.imposto_maximo_dedutivel()}")
+    print(f"Gastos dedutiveis: R${calculo.gastos_dedutiveis()}")
 
-    # print("\n RESUMO: ")
-    #print(f"Imposto bruto total: R${calculo.imposto_total()}")
-    #print(f"Abatimento: R${calculo.imposto_dedutivel()}")
-    #print(f"Imposto devido: R${(calculo.imposto_total())}")
+    print("\n RESUMO: ")
+    print(f"Imposto bruto total: R${calculo.imposto_total()}")
+    print(f"Abatimento: R${calculo.imposto_dedutivel()}")
+    print(f"Imposto devido: R${(calculo.imposto_total() - calculo.imposto_dedutivel())}")
